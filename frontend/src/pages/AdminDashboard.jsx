@@ -283,20 +283,23 @@ export default function AdminDashboard() {
 
   const load = useCallback(async () => {
     try {
-      const [carsR, slabR, lbR, offR] = await Promise.all([
-        getAllCars(), getActiveSlab(), getLeaderboard(), getOfficers(),
+      const [carsR, slabR, offR] = await Promise.all([
+        getAllCars(), getActiveSlab(), getOfficers(),
       ]);
       setCars(carsR.data.data);
       setSlab(slabR.data.data);
-      setLb(lbR.data.data);
       setOfficers(offR.data.data);
     } catch { toast('Failed to load data', 'error'); }
   }, []);
 
   const loadSales = useCallback(async () => {
     try {
-      const r = await getAdminAllSales(viewMonth, viewYear);
+      const [r, lbR] = await Promise.all([
+        getAdminAllSales(viewMonth, viewYear),
+        getLeaderboard(viewMonth, viewYear)
+      ]);
       setAllSales(r.data.data);
+      setLb(lbR.data.data);
     } catch { toast('Failed to load sales', 'error'); }
   }, [viewMonth, viewYear]);
 
@@ -427,7 +430,7 @@ export default function AdminDashboard() {
               {/* Leaderboard */}
               <div className="card">
                 <div className="card-header">
-                  <h3>🏆 Leaderboard — {MONTHS[new Date().getMonth() + 1]} {new Date().getFullYear()}</h3>
+                  <h3>🏆 Leaderboard — {MONTHS[viewMonth]} {viewYear}</h3>
                 </div>
                 {leaderboard.length === 0 ? (
                   <div className="empty-state">

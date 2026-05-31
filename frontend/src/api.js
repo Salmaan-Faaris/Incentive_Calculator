@@ -39,6 +39,6 @@ export const saveMySales = (data) => api.put('/sales/my', data);
 export const submitSales = (data) => api.post('/sales/my/submit', data);
 export const getSalesHistory = () => api.get('/sales/history');
 export const getAdminAllSales = (month, year) => api.get(`/sales/admin/all?month=${month}&year=${year}`);
-export const getLeaderboard = () => api.get('/sales/admin/leaderboard');
+export const getLeaderboard = (month, year) => api.get(`/sales/admin/leaderboard?month=${month}&year=${year}`);
 
 export default api;

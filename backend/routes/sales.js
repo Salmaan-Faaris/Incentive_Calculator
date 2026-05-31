@@ -120,8 +120,8 @@ router.get('/admin/all', protect, adminOnly, async (req, res) => {
 // GET /api/sales/admin/leaderboard — top officers this month
 router.get('/admin/leaderboard', protect, adminOnly, async (req, res) => {
   try {
-    const month = new Date().getMonth() + 1;
-    const year = new Date().getFullYear();
+    const month = parseInt(req.query.month) || new Date().getMonth() + 1;
+    const year = parseInt(req.query.year) || new Date().getFullYear();
 
     const entries = await SalesEntry.find({ month, year })
       .populate('officer', 'name email employeeId')
