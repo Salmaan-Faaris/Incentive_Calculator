@@ -15,9 +15,9 @@ IncentIQ is a modern, real-time incentive calculation and management platform bu
 - **Inventory & Staff Management:** Add or deactivate car models (with categories and base prices) and manage sales officer accounts.
 
 ## 🛠️ Technology Stack
-- **Frontend:** React, Vite, React Router, Context API (Vanilla CSS / No UI libraries)
-- **Backend:** Node.js, Express.js, JSON Web Tokens (JWT) for secure authentication
-- **Database:** MongoDB Atlas with Mongoose ODM
+- **Frontend:** React, Vite, React Router, Context API
+- **Backend:** Node.js, Express.js, JSON Web Tokens 
+- **Database:** MongoDB Atlas
 
 ---
 
