@@ -49,11 +49,19 @@ export default function Login() {
           <span className="login-brand-text">IncentIQ</span>
         </div>
 
-        <div className="login-features" style={{ marginTop: 'auto', marginBottom: 'auto' }}>
+        <div className="login-hero-text">
+          <h2>Smart Incentive Management for Toyota Nippon</h2>
+          <p>
+            A dynamic, real-time platform for calculating and managing
+            tiered sales incentives across your vehicle sales team.
+          </p>
+        </div>
+
+        <div className="login-features">
           {[
             { icon: '⚡', text: 'Real-time incentive calculation' },
             { icon: '🏅', text: 'Dynamic slab tier configuration' },
-            { icon: '🚗', text: 'Vehicle inventory management' },
+            { icon: '🚗', text: 'Toyota vehicle inventory management' },
             { icon: '📊', text: 'Live leaderboard & performance tracking' },
           ].map((f, i) => (
             <div key={i} className="login-feature" style={{ animationDelay: `${i * 80}ms` }}>
