@@ -493,12 +493,6 @@ export default function OfficerDashboard() {
                         </span>
                       </div>
                     )}
-
-                    {slab?.calculationType && (
-                      <div style={{ marginTop: 10, fontSize: 11, color: 'var(--text-muted)', textAlign: 'center' }}>
-                        Mode: {slab.calculationType === 'flat' ? '⚡ Flat Tier' : '📊 Progressive'}
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>

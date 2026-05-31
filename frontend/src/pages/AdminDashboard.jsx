@@ -31,13 +31,11 @@ function SlabEditor({ initialSlabs, initialType, onSave, loading }) {
     { minQty: 4, maxQty: 7,   incentivePerCar: 2000, label: 'Silver' },
     { minQty: 8, maxQty: null, incentivePerCar: 3500, label: 'Gold' },
   ]);
-  const [calcType, setCalcType] = useState(initialType || 'flat');
   const [configName, setConfigName] = useState('Standard Incentive Plan');
 
   useEffect(() => {
     if (initialSlabs?.length) setSlabs(initialSlabs);
-    if (initialType) setCalcType(initialType);
-  }, [initialSlabs, initialType]);
+  }, [initialSlabs]);
 
   const updateSlab = (i, field, val) => {
     const next = slabs.map((s, idx) =>
@@ -66,25 +64,12 @@ function SlabEditor({ initialSlabs, initialType, onSave, loading }) {
 
   return (
     <div>
-      {/* Config Name + Calc Type */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 16, marginBottom: 28, alignItems: 'end' }}>
+      {/* Config Name */}
+      <div style={{ marginBottom: 28 }}>
         <div className="form-group">
           <label className="form-label">Configuration Name</label>
           <input className="form-input" value={configName} onChange={(e) => setConfigName(e.target.value)} placeholder="e.g. Q2 2025 Incentive Plan" />
         </div>
-        <div className="form-group">
-          <label className="form-label">Calculation Mode</label>
-          <div className="toggle-group">
-            <button className={`toggle-opt ${calcType === 'flat' ? 'active' : ''}`} onClick={() => setCalcType('flat')} title="All cars earn the tier rate">⚡ Flat Tier</button>
-            <button className={`toggle-opt ${calcType === 'progressive' ? 'active' : ''}`} onClick={() => setCalcType('progressive')} title="Like tax brackets — each band earns its own rate">📊 Progressive</button>
-          </div>
-        </div>
-      </div>
-
-      <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 20, padding: '10px 14px', background: 'var(--bg-elevated)', borderRadius: 8, border: '1px solid var(--border)' }}>
-        {calcType === 'flat'
-          ? '⚡ Flat: When an officer hits a tier, ALL cars sold earn that tier\'s rate (e.g. 5 cars at ₹2,000 = ₹10,000 total)'
-          : '📊 Progressive: Each band earns its own rate, like income tax (1–3 cars earn ₹1,000 each, next 4 earn ₹2,000 each, etc.)'}
       </div>
 
       {/* Slab Rows */}
@@ -152,7 +137,7 @@ function SlabEditor({ initialSlabs, initialType, onSave, loading }) {
 
       {/* Save */}
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 24 }}>
-        <button className="btn btn-primary btn-lg" id="save-slabs-btn" onClick={() => onSave({ name: configName, slabs, calculationType: calcType })} disabled={loading}>
+        <button className="btn btn-primary btn-lg" id="save-slabs-btn" onClick={() => onSave({ name: configName, slabs, calculationType: 'flat' })} disabled={loading}>
           {loading ? <><span className="spinner" style={{ width: 18, height: 18, borderWidth: 2 }} /> Saving…</> : '✓ Save Slab Configuration'}
         </button>
       </div>
