@@ -46,11 +46,11 @@ router.put('/:id', protect, adminOnly, async (req, res) => {
   }
 });
 
-// DELETE /api/cars/:id — soft delete (admin)
+// DELETE /api/cars/:id — hard delete (admin)
 router.delete('/:id', protect, adminOnly, async (req, res) => {
   try {
-    await CarModel.findByIdAndUpdate(req.params.id, { isActive: false });
-    res.json({ success: true, message: 'Car model deactivated' });
+    await CarModel.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: 'Car model deleted completely' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
