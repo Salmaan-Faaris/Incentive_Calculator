@@ -310,10 +310,10 @@ export default function OfficerDashboard() {
                   <p>Log your car sales and watch your incentive compute in real time</p>
                 </div>
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-                  <select className="form-input" style={{ width: 140 }} value={month} onChange={(e) => setMonth(Number(e.target.value))} disabled={submitted}>
+                  <select className="form-input" style={{ width: 140 }} value={month} onChange={(e) => setMonth(Number(e.target.value))}>
                     {MONTHS.slice(1).map((m, i) => <option key={i + 1} value={i + 1}>{m}</option>)}
                   </select>
-                  <select className="form-input" style={{ width: 100 }} value={year} onChange={(e) => setYear(Number(e.target.value))} disabled={submitted}>
+                  <select className="form-input" style={{ width: 100 }} value={year} onChange={(e) => setYear(Number(e.target.value))}>
                     {[2024, 2025, 2026].map((y) => <option key={y} value={y}>{y}</option>)}
                   </select>
                 </div>
