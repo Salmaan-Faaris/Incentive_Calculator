@@ -9,7 +9,13 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:5174', credentials: true }));
+// Allow CORS for local dev AND Vercel deployed frontend
+app.use(cors({
+  origin: function(origin, callback) {
+    return callback(null, true);
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
