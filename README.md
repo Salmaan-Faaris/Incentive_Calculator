@@ -84,5 +84,5 @@ If you ran the `seed.js` script, you can log in using the following test account
 - Password: `admin123`
 
 **Sales Officer Account:**
-- Email: `lana@toyotanippon.com`
+- Email: `salman@toyotanippon.com`
 - Password: `officer123`
