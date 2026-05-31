@@ -49,19 +49,11 @@ export default function Login() {
           <span className="login-brand-text">IncentIQ</span>
         </div>
 
-        <div className="login-hero-text">
-          <h2>Smart Incentive Management for Toyota Nippon</h2>
-          <p>
-            A dynamic, real-time platform for calculating and managing
-            tiered sales incentives across your vehicle sales team.
-          </p>
-        </div>
-
-        <div className="login-features">
+        <div className="login-features" style={{ marginTop: 'auto', marginBottom: 'auto' }}>
           {[
             { icon: '⚡', text: 'Real-time incentive calculation' },
             { icon: '🏅', text: 'Dynamic slab tier configuration' },
-            { icon: '🚗', text: 'Toyota vehicle inventory management' },
+            { icon: '🚗', text: 'Vehicle inventory management' },
             { icon: '📊', text: 'Live leaderboard & performance tracking' },
           ].map((f, i) => (
             <div key={i} className="login-feature" style={{ animationDelay: `${i * 80}ms` }}>
@@ -69,15 +61,6 @@ export default function Login() {
               <span>{f.text}</span>
             </div>
           ))}
-        </div>
-
-        {/* Toyota watermark */}
-        <div style={{
-          position: 'absolute', bottom: 28, left: 56,
-          fontSize: 12, color: 'rgba(255,255,255,0.45)',
-          letterSpacing: '0.06em', fontWeight: 600,
-        }}>
-          TOYOTA NIPPON © {new Date().getFullYear()}
         </div>
       </div>
 
@@ -156,9 +139,7 @@ export default function Login() {
           </button>
         </form>
 
-        <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-disabled)', marginTop: 32 }}>
-          IncentIQ v2.0 — Toyota Nippon Internal Platform
-        </p>
+
       </div>
     </div>
   );
