@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const SalesEntry = require('../models/SalesEntry');
 const { protect, adminOnly } = require('../middleware/auth');
 
 const signToken = (id) =>
@@ -61,7 +62,8 @@ router.get('/officers', protect, adminOnly, async (req, res) => {
 router.delete('/officers/:id', protect, adminOnly, async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
-    res.json({ success: true, message: 'Officer deleted' });
+    await SalesEntry.deleteMany({ officer: req.params.id });
+    res.json({ success: true, message: 'Officer and their sales history deleted' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

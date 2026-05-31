@@ -15,6 +15,18 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Auto-logout on token expiration (401)
+api.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401) {
+      localStorage.removeItem('iq_token');
+      window.location.href = '/';
+    }
+    return Promise.reject(err);
+  }
+);
+
 // Auth
 export const login = (data) => api.post('/auth/login', data);
 export const getMe = () => api.get('/auth/me');

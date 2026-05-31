@@ -109,7 +109,7 @@ router.get('/admin/all', protect, adminOnly, async (req, res) => {
 
     const entries = await SalesEntry.find({ month, year })
       .populate('officer', 'name email employeeId')
-      .sort({ totalIncentive: -1 });
+      .sort({ totalIncentive: -1, totalCars: -1 });
 
     res.json({ success: true, data: entries });
   } catch (err) {
@@ -125,7 +125,7 @@ router.get('/admin/leaderboard', protect, adminOnly, async (req, res) => {
 
     const entries = await SalesEntry.find({ month, year })
       .populate('officer', 'name email employeeId')
-      .sort({ totalIncentive: -1 })
+      .sort({ totalIncentive: -1, totalCars: -1 })
       .limit(10);
 
     res.json({ success: true, data: entries });

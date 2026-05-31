@@ -7,6 +7,9 @@ import { useToast } from '../context/ToastContext';
 const MONTHS = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const TIER_COLORS = { bronze: '#cd7f32', silver: '#94a3b8', gold: '#f59e0b', platinum: '#06b6d4', diamond: '#10b981', elite: '#7c3aed' };
 
+const currentYear = new Date().getFullYear();
+const DYNAMIC_YEARS = [currentYear - 1, currentYear, currentYear + 1, currentYear + 2];
+
 const TABS = [
   { id: 'calculator', icon: '⚡', label: 'Calculator' },
   { id: 'history',    icon: '🕒', label: 'My History' },
@@ -314,7 +317,7 @@ export default function OfficerDashboard() {
                     {MONTHS.slice(1).map((m, i) => <option key={i + 1} value={i + 1}>{m}</option>)}
                   </select>
                   <select className="form-input" style={{ width: 100 }} value={year} onChange={(e) => setYear(Number(e.target.value))}>
-                    {[2024, 2025, 2026].map((y) => <option key={y} value={y}>{y}</option>)}
+                    {DYNAMIC_YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
                   </select>
                 </div>
               </div>

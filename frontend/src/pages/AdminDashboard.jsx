@@ -14,6 +14,9 @@ const MONTHS = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'Jul
 const CAR_COLORS  = ['#e11d48', '#0891b2', '#059669', '#7c3aed', '#d97706', '#dc2626', '#f97316', '#db2777', '#0ea5e9'];
 const CATEGORIES  = ['Hatchback', 'Sedan', 'SUV', 'MUV', 'EV', 'EV SUV', 'Crossover', 'Pickup', 'Luxury'];
 
+const currentYear = new Date().getFullYear();
+const DYNAMIC_YEARS = [currentYear - 1, currentYear, currentYear + 1, currentYear + 2];
+
 const TABS = [
   { id: 'overview',  icon: '📊', label: 'Overview' },
   { id: 'slabs',     icon: '⚡', label: 'Slab Config' },
@@ -394,7 +397,7 @@ export default function AdminDashboard() {
                     {MONTHS.slice(1).map((m, i) => <option key={i + 1} value={i + 1}>{m}</option>)}
                   </select>
                   <select className="form-input" style={{ width: 100 }} value={viewYear} onChange={(e) => setViewYear(Number(e.target.value))}>
-                    {[2024, 2025, 2026].map((y) => <option key={y} value={y}>{y}</option>)}
+                    {DYNAMIC_YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
                   </select>
                   <button className="btn btn-ghost btn-sm" onClick={loadSales}>↻ Refresh</button>
                 </div>
